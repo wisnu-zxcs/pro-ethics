@@ -17,7 +17,7 @@ import { Container } from "./assets/components/layout/container";
 import { SectionHeader } from "./assets/components/layout/section-header";
 import { TabNavigation } from "./assets/components/layout/tabs-nav";
 import { PageFooter } from "./assets/components/layout/page-footer";
-import { ModuleSelector } from "./assets/components/layout/module-selector";
+import ModuleSelector from "./assets/components/layout/module-selector";
 
 const jobTabs = [
     { key: TABS.JOB_CARDS, label: "Detail Lowongan" },
