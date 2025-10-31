@@ -17,11 +17,7 @@ import { Container } from "./assets/components/layout/container";
 import { SectionHeader } from "./assets/components/layout/section-header";
 import { TabNavigation } from "./assets/components/layout/tabs-nav";
 import { PageFooter } from "./assets/components/layout/page-footer";
-
-interface ModuleSelectorProps {
-    activeModule: "job" | "cert";
-    onModuleChange: (module: "job" | "cert") => void;
-}
+import { ModuleSelector } from "./assets/components/layout/module-selector";
 
 const jobTabs = [
     { key: TABS.JOB_CARDS, label: "Detail Lowongan" },
@@ -121,35 +117,6 @@ function getSectionInfo(tab: TabKey): Array<{ label: string; value: string; desc
     return [];
 }
 
-function ModuleSelector({ activeModule, onModuleChange }: ModuleSelectorProps) {
-    return (
-        <div className="flex justify-center mb-8">
-            <div className="bg-white rounded-lg shadow-lg p-2 inline-flex gap-2">
-                <button
-                    onClick={() => onModuleChange("job")}
-                    className={`px-6 py-3 rounded-md font-medium transition-all inline-flex items-center gap-2 ${activeModule === "job"
-                        ? "bg-blue-600 text-white shadow-md"
-                        : "text-gray-600 hover:bg-gray-50"
-                        }`}
-                >
-                    <Briefcase size={20} />
-                    <span>Tugas 5: Lowongan Kerja</span>
-                </button>
-                <button
-                    onClick={() => onModuleChange("cert")}
-                    className={`px-6 py-3 rounded-md font-medium transition-all inline-flex items-center gap-2 ${activeModule === "cert"
-                        ? "bg-purple-600 text-white shadow-md"
-                        : "text-gray-600 hover:bg-gray-50"
-                        }`}
-                >
-                    <Award size={20} />
-                    <span>Tugas 6: Sertifikasi SKKNI</span>
-                </button>
-            </div>
-        </div>
-    )
-}
-
 function TabContent({ activeTab }: { activeTab: TabKey }) {
     // Tugas 5: Job Analysis
     if (activeTab === TABS.JOB_CARDS) {
@@ -220,8 +187,8 @@ function App() {
                 <main className="mb-12">
                     <TabContent activeTab={activeTab} />
                 </main>
-                <PageFooter />
             </Container>
+            <PageFooter />
         </PageWrapper>
     )
 }
