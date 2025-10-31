@@ -1,6 +1,6 @@
 import { ExternalLink, FileText } from "lucide-react";
 import { Card } from "../../assets/components/ui/card";
-import { SectionHeader } from "../../assets/components/ui/section-header";
+import { SectionTitle } from "../../assets/components/ui/section-title";
 import { Badge } from "../../assets/components/ui/badge";
 import { cn } from "../../assets/utils/styles";
 
@@ -20,8 +20,8 @@ interface StatCardProps {
 function ComparisonTable() {
     return (
         <Card padding="none">
-            <div className="bg-linear-to-r from-purple-600 to-blue-600 p-6 text-white">
-                <SectionHeader
+            <div className="bg-linear-to-r from-purple-600 to-blue-600 p-6 text-white rounded-t-lg">
+                <SectionTitle
                     title="Perbandingan: SKKNI vs Kebutuhan Industri"
                     icon={FileText}
                     className="mb-0 [&_h2]:text-white [&_svg]:text-white"
@@ -73,6 +73,8 @@ function ComparisonTable() {
                     </tbody>
                 </table>
             </div>
+
+            {/* Summary Stats */}
             <div className="p-6 grid md:grid-cols-3 gap-4">
                 <StatCard
                     value="87%"
@@ -94,8 +96,7 @@ function ComparisonTable() {
                 <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
                     <p className="text-sm text-gray-700">
                         <strong>Kesimpulan:</strong> Sertifikasi BNSP sangat kuat untuk{" "}
-                        <span className="font-semibold text-blue-700">frontend development</span>,
-                        tetapi perlu dilengkapi dengan pembelajaran mandiri untuk backend, database, dan DevOps.
+                        <span className="font-semibold text-blue-700">frontend development</span>, tetapi perlu dilengkapi dengan pembelajaran mandiri untuk backend, database, dan DevOps.
                     </p>
                 </div>
             </div>
@@ -103,16 +104,15 @@ function ComparisonTable() {
     )
 }
 
-
 function ComparisonRow({ skkni, industry, match, isMissing = false }: ComparisonRowProps) {
     const getMatchColor = (value: number) => {
         if (value >= 80) return "green";
         if (value >= 50) return "orange";
         return "red";
-    };
+    }
 
     return (
-        <tr className={cn("border-b hover:bg-gray-50", isMissing && "bg-red-50")}>
+        <tr className={cn("hover:bg-gray-50", isMissing && "bg-red-50")}>
             <td className="p-4 text-gray-700">{skkni}</td>
             <td className="p-4 text-gray-700">{industry}</td>
             <td className="p-4 text-center">
@@ -142,11 +142,13 @@ function StatCard({ value, label, color }: StatCardProps) {
 function ConnectionSection() {
     return (
         <Card className="border-2 border-indigo-300">
-            <SectionHeader
+            <SectionTitle
                 title="Hubungan dengan Analisis Lowongan (Tugas 5)"
                 icon={ExternalLink}
             />
+
             <div className="space-y-4">
+                {/* Alignment */}
                 <div className="p-4 bg-indigo-50 rounded-lg border border-indigo-200">
                     <h3 className="font-bold text-indigo-700 mb-3">Keselarasan Kompetensi</h3>
                     <div className="grid md:grid-cols-2 gap-4 text-sm">
@@ -175,6 +177,8 @@ function ConnectionSection() {
                         </p>
                     </div>
                 </div>
+
+                {/* Gap Analysis */}
                 <div className="p-4 bg-yellow-50 rounded-lg border border-yellow-200">
                     <h3 className="font-bold text-yellow-700 mb-2">Gap yang Perlu Diisi Sendiri</h3>
                     <p className="text-sm text-gray-700 mb-2">
@@ -188,6 +192,8 @@ function ConnectionSection() {
                         <li>• Basic DevOps (deployment, CI/CD)</li>
                     </ul>
                 </div>
+
+                {/* Roadmap */}
                 <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
                     <h3 className="font-bold text-blue-700 mb-3">Roadmap: Sertifikasi ke Job-Ready</h3>
                     <div className="space-y-3 text-sm">
@@ -213,7 +219,10 @@ function ConnectionSection() {
 export function CertificationComparison() {
     return (
         <div className="space-y-8">
+            {/* Comparison Table */}
             <ComparisonTable />
+
+            {/* Connection to Tugas 5 */}
             <ConnectionSection />
         </div>
     )

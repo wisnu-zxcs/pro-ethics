@@ -1,7 +1,7 @@
-import { FileText, AlertCircle, Users, GraduationCap, Award } from "lucide-react";
-import { certificationData } from "../../assets/data/certs";
+import { AlertCircle, Award, FileText, GraduationCap, Users } from "lucide-react";
 import { Card } from "../../assets/components/ui/card";
-import { SectionHeader } from "../../assets/components/ui/section-header";
+import { SectionTitle } from "../../assets/components/ui/section-title";
+import { certificationData } from "../../assets/data/certs";
 import { InfoItem } from "../../assets/components/ui/info-item";
 import { List } from "../../assets/components/ui/list";
 
@@ -10,7 +10,7 @@ function SchemeInfo() {
 
     return (
         <Card>
-            <SectionHeader
+            <SectionTitle
                 title="Informasi Skema Sertifikasi"
                 icon={FileText}
                 subtitle="Detail lengkap skema sertifikasi BNSP untuk Junior Web Developer"
@@ -51,6 +51,8 @@ function SchemeInfo() {
                     highlight
                 />
             </div>
+
+            {/* SKKNI Reference */}
             <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
                 <h3 className="font-bold text-blue-800 mb-2 flex items-center gap-2">
                     <AlertCircle className="w-5 h-5" />
@@ -58,15 +60,15 @@ function SchemeInfo() {
                 </h3>
                 <p className="text-sm text-gray-700">{data.rujukanSKKNI}</p>
             </div>
+
+            {/* LSP Info */}
             <div className="mt-6 p-4 bg-green-50 border border-green-200 rounded-lg">
                 <h3 className="font-bold text-green-800 mb-2 flex items-center gap-2">
                     <Award className="w-5 h-5" />
                     Tentang LSP Teknologi Digital
                 </h3>
                 <p className="text-sm text-gray-700">
-                    LSP Teknologi Digital adalah Lembaga Sertifikasi Profesi yang terlisensi BNSP untuk
-                    menyelenggarakan Uji Kompetensi di bidang TIK. LSP ini berwenang menerbitkan sertifikat
-                    kompetensi yang diakui nasional berdasarkan SKKNI.
+                    LSP Teknologi Digital adalah Lembaga Sertifikasi Profesi yang terlisensi BNSP untuk menyelenggarakan Uji Kompetensi di bidang TIK. LSP ini berwenang menerbitkan sertifikat kompetensi yang diakui nasional berdasarkan SKKNI.
                 </p>
             </div>
         </Card>
@@ -78,11 +80,12 @@ function AssessmentSection() {
 
     return (
         <Card>
-            <SectionHeader
+            <SectionTitle
                 title="Metode Penilaian & Persyaratan"
                 icon={Users}
             />
             <div className="grid md:grid-cols-2 gap-6">
+                {/* Assessment Methods */}
                 <div>
                     <h3 className="font-bold text-purple-700 mb-4 flex items-center gap-2">
                         <FileText className="w-5 h-5" />
@@ -99,6 +102,8 @@ function AssessmentSection() {
                         ))}
                     </div>
                 </div>
+
+                {/* Requirements */}
                 <div>
                     <h3 className="font-bold text-blue-700 mb-4 flex items-center gap-2">
                         <GraduationCap className="w-5 h-5" />
@@ -114,7 +119,10 @@ function AssessmentSection() {
 export function CertificationInfo() {
     return (
         <div className="space-y-8">
+            {/* Basic Info */}
             <SchemeInfo />
+
+            {/* Assessment Methods */}
             <AssessmentSection />
         </div>
     )

@@ -32,5 +32,5 @@ export function TabNavigation({
                 ))}
             </div>
         </nav>
-    );
+    )
 }

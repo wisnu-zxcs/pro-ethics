@@ -1,9 +1,8 @@
-import { TrendingUp, Award, Target, Lightbulb } from "lucide-react";
+import { Award, Lightbulb, Target, TrendingUp } from "lucide-react";
 import { Card } from "../../assets/components/ui/card";
-import { SectionHeader } from "../../assets/components/ui/section-header";
+import { SectionTitle } from "../../assets/components/ui/section-title";
 import type { ComponentType, ReactNode } from "react";
 
-// CONCLUSION SECTION
 interface ConclusionSectionProps {
     title: string;
     icon: ComponentType<{ size?: number; className?: string }>;
@@ -11,7 +10,6 @@ interface ConclusionSectionProps {
     children: ReactNode;
 }
 
-// CONCLUSION SECTION COMPONENT
 function ConclusionSection({ title, icon: Icon, iconColor, children }: ConclusionSectionProps) {
     return (
         <div className="bg-white p-6 rounded-lg border border-orange-200">
@@ -24,16 +22,16 @@ function ConclusionSection({ title, icon: Icon, iconColor, children }: Conclusio
     )
 }
 
-// JOB ANALYSIS CONCLUSION COMPONENT
 export function JobConclusion() {
     return (
         <div className="space-y-6">
             <Card className="bg-linear-to-r from-orange-50 to-red-50 border-2 border-orange-300">
-                <SectionHeader
+                <SectionTitle
                     title="Kesimpulan Analisis Lowongan Kerja"
                     icon={TrendingUp}
                     className="mb-6"
                 />
+
                 <div className="space-y-6">
                     <ConclusionSection
                         title="1. Kebutuhan Skill Industri"
@@ -41,8 +39,7 @@ export function JobConclusion() {
                         iconColor="text-blue-600"
                     >
                         <p className="text-gray-700 leading-relaxed mb-3">
-                            Berdasarkan analisis 5+ lowongan Fullstack Developer, terdapat pola konsisten dalam
-                            kebutuhan skill industri:
+                            Berdasarkan analisis 5+ lowongan Fullstack Developer, terdapat pola konsisten dalam kebutuhan skill industri:
                         </p>
                         <ul className="space-y-2 text-gray-700 ml-4">
                             <li className="flex items-start gap-2">
@@ -63,6 +60,7 @@ export function JobConclusion() {
                             </li>
                         </ul>
                     </ConclusionSection>
+
                     <ConclusionSection
                         title="2. Rentang Gaji & Pengalaman"
                         icon={TrendingUp}
@@ -98,6 +96,7 @@ export function JobConclusion() {
                             </div>
                         </div>
                     </ConclusionSection>
+
                     <ConclusionSection
                         title="3. Pentingnya Soft Skills"
                         icon={Award}
@@ -125,6 +124,7 @@ export function JobConclusion() {
                             </div>
                         </div>
                     </ConclusionSection>
+
                     <div className="bg-linear-to-r from-blue-600 to-purple-600 text-white p-6 rounded-lg">
                         <h3 className="font-bold text-xl mb-4 flex items-center gap-2">
                             <Lightbulb className="w-6 h-6" />

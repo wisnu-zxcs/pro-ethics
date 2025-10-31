@@ -1,11 +1,11 @@
-import { Target, CheckCircle } from "lucide-react";
+import { CheckCircle, Target } from "lucide-react";
+import { Badge } from "../../assets/components/ui/badge";
 import type { UnitKompetensi as UnitKompetensiTypes } from "../../assets/types/cert";
 import { cn } from "../../assets/utils/styles";
-import { Badge } from "../../assets/components/ui/badge";
 import { useState } from "react";
 import { getTopUnits } from "../../assets/data/certs";
 import { Card } from "../../assets/components/ui/card";
-import { SectionHeader } from "../../assets/components/ui/section-header";
+import { SectionTitle } from "../../assets/components/ui/section-title";
 
 interface UnitCardProps {
     unit: UnitKompetensiTypes;
@@ -51,12 +51,15 @@ function UnitCard({ unit, index, isSelected, onClick }: UnitCardProps) {
 function UnitDetail({ unit }: { unit: UnitKompetensiTypes }) {
     return (
         <div className="border-t-2 border-gray-200 pt-6 space-y-6">
+            {/* Header */}
             <div className="bg-linear-to-r from-green-50 to-blue-50 p-6 rounded-lg">
                 <h3 className="text-xl font-bold text-gray-800 mb-2">{unit.judul}</h3>
                 <p className="text-sm text-gray-600 mb-3">
                     Kode Unit: <span className="font-semibold text-gray-800">{unit.kode}</span>
                 </p>
                 <p className="text-gray-700 mb-4">{unit.deskripsi}</p>
+
+                {/* Technologies */}
                 <div className="flex flex-wrap gap-2">
                     {unit.teknologi.map((tech, idx) => (
                         <span
@@ -68,6 +71,8 @@ function UnitDetail({ unit }: { unit: UnitKompetensiTypes }) {
                     ))}
                 </div>
             </div>
+
+            {/* KUK (Kriteria Unjuk Kerja) */}
             <div className="bg-white border-2 border-green-200 rounded-lg p-6">
                 <h4 className="font-bold text-green-800 text-lg mb-4 flex items-center gap-2">
                     <CheckCircle className="w-5 h-5" />
@@ -76,6 +81,7 @@ function UnitDetail({ unit }: { unit: UnitKompetensiTypes }) {
                 <p className="text-sm text-gray-600 mb-4 italic">
                     Berikut adalah bukti/hasil kerja yang dapat diukur untuk membuktikan kompetensi:
                 </p>
+
                 <ol className="space-y-3">
                     {unit.kuk.map((kriteria, idx) => (
                         <li key={idx} className="flex items-start gap-3">
@@ -97,11 +103,13 @@ export function UnitKompetensi() {
 
     return (
         <Card>
-            <SectionHeader
+            <SectionTitle
                 title="3 Unit Kompetensi Inti"
                 icon={Target}
                 subtitle="Unit kompetensi paling penting dalam skema sertifikasi"
             />
+
+            {/* Unit Selector */}
             <div className="grid md:grid-cols-3 gap-4 mb-6">
                 {topUnits.map((unit, index) => (
                     <UnitCard
@@ -113,6 +121,8 @@ export function UnitKompetensi() {
                     />
                 ))}
             </div>
+
+            {/* Selected Unit Detail */}
             <UnitDetail unit={topUnits[selectedIndex]} />
         </Card>
     )

@@ -1,16 +1,14 @@
 import { FileText } from "lucide-react";
 import { Card } from "../../assets/components/ui/card";
-import { SectionHeader } from "../../assets/components/ui/section-header";
+import { SectionTitle } from "../../assets/components/ui/section-title";
 import type { Job } from "../../assets/types/job";
 import { UI } from "../../assets/config/ui";
 import { takeFirst } from "../../assets/utils/array";
 
-// MAIN COMPARISON TABLE
 interface ComparisonTableProps {
     jobs: Job[];
 }
 
-// STANDARD ROW
 interface StandardRowProps {
     label: string;
     values: string[];
@@ -18,7 +16,6 @@ interface StandardRowProps {
     bgClassName?: string;
 }
 
-// SKILL ROW
 interface SkillRowProps {
     label: string;
     note?: string;
@@ -27,18 +24,17 @@ interface SkillRowProps {
     bgClassName?: string;
 }
 
-// TABLE HEADER
 function TableHeader({ jobs }: { jobs: Job[] }) {
     return (
-        <thead className="bg-gray-50">
+        <thead className="bg-gray-50 border-b border-b-gray-400">
             <tr>
-                <th className="px-6 py-4 text-left text-sm font-bold text-gray-700 border-b-2 sticky left-0 bg-gray-50 z-10">
+                <th className="px-6 py-4 text-left text-sm font-bold text-gray-700 sticky left-0 bg-gray-50 z-10">
                     Kriteria
                 </th>
                 {jobs.map((_, idx) => (
                     <th
                         key={idx}
-                        className="px-6 py-4 text-left text-sm font-bold text-gray-700 border-b-2 whitespace-nowrap"
+                        className="px-6 py-4 text-left text-sm font-bold text-gray-700 whitespace-nowrap"
                     >
                         Lowongan {idx + 1}
                     </th>
@@ -48,7 +44,6 @@ function TableHeader({ jobs }: { jobs: Job[] }) {
     )
 }
 
-// TABLE BODY
 function TableBody({ jobs }: { jobs: Job[] }) {
     return (
         <tbody className="divide-y divide-gray-200">
@@ -84,7 +79,6 @@ function TableBody({ jobs }: { jobs: Job[] }) {
     )
 }
 
-// STANDARD ROW COMPONENT
 function StandardRow({ label, values, valueClassName = "text-gray-700", bgClassName }: StandardRowProps) {
     return (
         <tr className={`hover:bg-gray-50 ${bgClassName || ""}`}>
@@ -100,7 +94,6 @@ function StandardRow({ label, values, valueClassName = "text-gray-700", bgClassN
     )
 }
 
-// SKILL ROW COMPONENT
 function SkillRow({ label, note, jobs, skillType, bgClassName }: SkillRowProps) {
     const maxSkills = skillType === "hardSkills" ? UI.MAX_HARD_SKILLS : UI.MAX_SOFT_SKILLS;
 
@@ -127,17 +120,20 @@ function SkillRow({ label, note, jobs, skillType, bgClassName }: SkillRowProps) 
     )
 }
 
-// MAIN COMPARISON TABLE COMPONENT
 export function ComparisonTable({ jobs }: ComparisonTableProps) {
     return (
         <Card padding="none">
-            <div className="bg-linear-to-r from-indigo-600 to-blue-600 p-6 text-white">
-                <SectionHeader
+
+            {/* Header */}
+            <div className="bg-linear-to-r from-indigo-600 to-blue-600 p-6 text-white rounded-t-lg">
+                <SectionTitle
                     title="Tabel Perbandingan Lowongan Kerja"
                     icon={FileText}
                     className="mb-0 [&_h2]:text-white [&_svg]:text-white"
                 />
             </div>
+
+            {/* Table */}
             <div className="overflow-x-auto">
                 <table className="w-full">
                     <TableHeader jobs={jobs} />

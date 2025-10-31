@@ -5,12 +5,14 @@ interface ContainerProps {
     children: ReactNode;
     maxWidth?: "sm" | "md" | "lg" | "xl" | "2xl" | "full";
     className?: string;
+    noPadding?: boolean;
 }
 
 export function Container({
     children,
     maxWidth = "xl",
     className,
+    noPadding = false,
 }: ContainerProps) {
     const maxWidths = {
         sm: "max-w-screen-sm",
@@ -22,7 +24,12 @@ export function Container({
     };
 
     return (
-        <div className={cn("container mx-auto px-4 py-8", maxWidths[maxWidth], className)}>
+        <div className={cn(
+            "container mx-auto",
+            !noPadding && "px-4 py-8",
+            maxWidths[maxWidth],
+            className
+        )}>
             {children}
         </div>
     )

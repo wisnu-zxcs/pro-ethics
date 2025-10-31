@@ -34,7 +34,7 @@ export const jobsData: Job[] = [
         role: "Full Stack Developer",
         status: "Full Time",
         experience: "Junior / Entry-level (1-3 tahun)",
-        salary: "Rp 6.500.000 – Rp 8.000.000 / bulan",
+        salary: "IDR 6.500.000 – Rp 8.000.000 / bulan",
         hardSkills: [
             "JavaScript (ES6+)",
             "Node.js",

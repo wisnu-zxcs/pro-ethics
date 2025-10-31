@@ -43,7 +43,7 @@ interface DetailSectionProps {
 // CARD HEADER COMPONENT
 function CardHeader({ job, index }: CardHeaderProps) {
     return (
-        <div className="bg-linear-to-r from-blue-600 to-purple-600 p-6 text-white">
+        <div className="bg-linear-to-r from-blue-600 to-purple-600 p-6 text-white rounded-t-lg">
             <div className="flex items-center gap-4">
                 <div className="w-16 h-16 rounded-lg overflow-hidden bg-white flex items-center justify-center shrink-0">
                     <img

@@ -15,5 +15,5 @@ export function PageFooter({
             <p>© {year} - Analisis Profesi & Sertifikasi TI</p>
             <p className="mt-2 text-xs">Built with React + TypeScript + Tailwind CSS</p>
         </footer>
-    );
+    )
 }

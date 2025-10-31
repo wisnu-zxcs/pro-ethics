@@ -2,7 +2,7 @@ import type { LucideIcon } from "lucide-react";
 import type { ReactNode } from "react";
 import { cn } from "../../utils/styles";
 
-interface SectionHeaderProps {
+interface SectionTitleProps {
     title: string;
     icon?: LucideIcon;
     subtitle?: string;
@@ -10,13 +10,13 @@ interface SectionHeaderProps {
     className?: string;
 }
 
-export function SectionHeader({
+export function SectionTitle({
     title,
     icon: Icon,
     subtitle,
     children,
     className,
-}: SectionHeaderProps) {
+}: SectionTitleProps) {
     return (
         <div className={cn("flex items-start justify-between mb-6", className)}>
             <div className="flex-1">
